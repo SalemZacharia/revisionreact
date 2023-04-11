@@ -44,6 +44,15 @@
       "quantity": 0,
       "description": "nhtdjn",
       "id": 5
+    },
+    {
+      "name": "props",
+      "price": "100",
+      "img": "product1.webp",
+      "like": 0,
+      "quantity": "2",
+      "description": "zzzz",
+      "id": 6
     }
   ]
 }

@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { addProduct } from "../api";
+import { useDispatch } from "react-redux";
+import { ajoutProduct } from "../redux/actions/products";
 
 export default function AddProduct() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState({
     name: "",
     price: 0,
@@ -22,9 +25,10 @@ export default function AddProduct() {
     setProduct({ ...product, [e.target.name]: e.target.files[0].name });
   };
   const addNewP = async () => {
-    console.log(product);
-    const res = await addProduct(product);
-    if (res.status === 201) navigate("/products");
+    // console.log(product);
+    // const res = await addProduct(product);
+    // if (res.status === 201) navigate("/products");
+    dispatch(ajoutProduct(product));
   };
   return (
     <Container style={{ marginTop: "30px" }}>

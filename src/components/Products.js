@@ -4,11 +4,14 @@ import Product from "./Product";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import { getallProducts } from "../api";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../redux/actions/products";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  //const [products, setProducts] = useState([]);
   const [bienvenue, setBienvenue] = useState(true);
   const [boul, setBoule] = useState(false);
+  const dispatch = useDispatch();
   const bought = () => {
     setBoule(true);
     setTimeout(() => {
@@ -19,13 +22,15 @@ const Products = () => {
     setTimeout(() => {
       setBienvenue(false);
     }, "3000");
-    const getproducts = async () => {
-      const response = await getallProducts();
-      setProducts(response.data);
-    };
+    dispatch(getProducts());
+    // const getproducts = async () => {
+    //   const response = await getallProducts();
+    //   setProducts(response.data);
+    // };
 
-    getproducts();
-  }, []);
+    // getproducts();
+  }, [dispatch]);
+  const products = useSelector((state) => state.products.products);
   return (
     <Container>
       {bienvenue && (
