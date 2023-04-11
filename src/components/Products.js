@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import { getallProducts } from "../api";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../redux/actions/products";
+import { fetchAllProducts } from "../redux/slices/productsSlice";
 
 const Products = () => {
   //const [products, setProducts] = useState([]);
@@ -22,7 +23,7 @@ const Products = () => {
     setTimeout(() => {
       setBienvenue(false);
     }, "3000");
-    dispatch(getProducts());
+    dispatch(fetchAllProducts());
     // const getproducts = async () => {
     //   const response = await getallProducts();
     //   setProducts(response.data);
